@@ -1,0 +1,92 @@
+<response>
+    <version>0.1</version>
+    <termsofService>http://www.wunderground.com/weather/api/d/terms.html</termsofService>
+    <features>
+        <feature>conditions</feature>
+    </features>
+    <current_observation>
+        <image>
+            <url>http://icons-ak.wxug.com/graphics/wu2/logo_130x80.png</url>
+            <title>Weather Underground</title>
+            <link>http://www.wunderground.com</link>
+        </image>
+        <display_location>
+            <full>San Francisco, CA</full>
+            <city>San Francisco</city>
+            <state>CA</state>
+            <state_name>California</state_name>
+            <country>US</country>
+            <country_iso3166>US</country_iso3166>
+            <zip>94117</zip>
+            <magic>1</magic>
+            <wmo>99999</wmo>
+            <latitude>37.77005005</latitude>
+            <longitude>-122.44140625</longitude>
+            <elevation>102.00000000</elevation>
+        </display_location>
+        <observation_location>
+            <full>Cole Valley, San Francisco, California</full>
+            <city>Cole Valley, San Francisco</city>
+            <state>California</state>
+            <country>US</country>
+            <country_iso3166>US</country_iso3166>
+            <latitude>37.760796</latitude>
+            <longitude>-122.449608</longitude>
+            <elevation>400 ft</elevation>
+        </observation_location>
+        <estimated>
+        </estimated>
+        <station_id>KCASANFR110</station_id>
+        <observation_time>Last Updated on August 29, 1:22 AM PDT</observation_time>
+        <observation_time_rfc822>Thu, 29 Aug 2013 01:22:08 -0700</observation_time_rfc822>
+        <observation_epoch>1377764528</observation_epoch>
+        <local_time_rfc822>Thu, 29 Aug 2013 01:22:20 -0700</local_time_rfc822>
+        <local_epoch>1377764540</local_epoch>
+        <local_tz_short>PDT</local_tz_short>
+        <local_tz_long>America/Los_Angeles</local_tz_long>
+        <local_tz_offset>-0700</local_tz_offset>
+        <weather>Overcast</weather>
+        <temperature_string>59.4 F (15.2 C)</temperature_string>
+        <temp_f>59.4</temp_f>
+        <temp_c>15.2</temp_c>
+        <relative_humidity>96%</relative_humidity>
+        <wind_string>Calm</wind_string>
+        <wind_dir>South</wind_dir>
+        <wind_degrees>180</wind_degrees>
+        <wind_mph>0.0</wind_mph>
+        <wind_gust_mph>0</wind_gust_mph>
+        <wind_kph>0.0</wind_kph>
+        <wind_gust_kph>0</wind_gust_kph>
+        <pressure_mb>1015</pressure_mb>
+        <pressure_in>29.98</pressure_in>
+        <pressure_trend>0</pressure_trend>
+        <dewpoint_string>58 F (15 C)</dewpoint_string>
+        <dewpoint_f>58</dewpoint_f>
+        <dewpoint_c>15</dewpoint_c>
+        <heat_index_string>NA</heat_index_string>
+        <heat_index_f>NA</heat_index_f>
+        <heat_index_c>NA</heat_index_c>
+        <windchill_string>NA</windchill_string>
+        <windchill_f>NA</windchill_f>
+        <windchill_c>NA</windchill_c>
+        <feelslike_string>59.4 F (15.2 C)</feelslike_string>
+        <feelslike_f>59.4</feelslike_f>
+        <feelslike_c>15.2</feelslike_c>
+        <visibility_mi>10.0</visibility_mi>
+        <visibility_km>16.1</visibility_km>
+        <solarradiation></solarradiation>
+        <UV>0</UV>
+        <precip_1hr_string>0.00 in ( 0 mm)</precip_1hr_string>
+        <precip_1hr_in>0.00</precip_1hr_in>
+        <precip_1hr_metric> 0</precip_1hr_metric>
+        <precip_today_string>0.00 in (0 mm)</precip_today_string>
+        <precip_today_in>0.00</precip_today_in>
+        <precip_today_metric>0</precip_today_metric>
+        <icon>cloudy</icon>
+        <icon_url>http://icons-ak.wxug.com/i/c/k/nt_cloudy.gif</icon_url>
+        <forecast_url>http://www.wunderground.com/US/CA/San_Francisco.html</forecast_url>
+        <history_url>http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KCASANFR110</history_url>
+        <ob_url>http://www.wunderground.com/cgi-bin/findweather/getForecast?query=37.760796,-122.449608</ob_url>
+    </current_observation>
+</response>
+

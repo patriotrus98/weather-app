@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+  http://www.springframework.org/schema/mvc    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+  http://www.springframework.org/schema/context    http://www.springframework.org/schema/context/spring-context-3.2.xsd
+  http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+    <context:component-scan base-package="com.wunderground"/>
+
+    <mvc:annotation-driven/>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/view/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.context.support.ResourceBundleMessageSource"
+          id="messageSource">
+        <property name="basename" value="messages"/>
+    </bean>
+
+    <util:properties id="wunderGroundClient"
+                     location="classpath:wunderGroundClient.properties"/>
+
+    <bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+        <property name="aliases">
+            <props>
+                <prop key="response">com.wunderground.model.Response</prop>
+                <prop key="current_observation">com.wunderground.model.CurrentObservation</prop>
+                <prop key="observation_location">com.wunderground.model.ObservationLocation</prop>
+                <prop key="feature">com.wunderground.model.Feature</prop>
+                <prop key="image">com.wunderground.model.Image</prop>
+                <prop key="display_location">com.wunderground.model.DisplayLocation</prop>
+            </props>
+        </property>
+
+        <!-- Tells XStream to find the alias names in the following classes -->
+        <property name="annotatedClasses">
+            <list>
+                <value>com.wunderground.model.Response</value>
+                <value>com.wunderground.model.CurrentObservation</value>
+                <value>com.wunderground.model.ObservationLocation</value>
+                <value>com.wunderground.model.Feature</value>
+                <value>com.wunderground.model.Image</value>
+                <value>com.wunderground.model.DisplayLocation</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <list>
+                <bean id="xmlConverter"
+                      class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+                    <constructor-arg ref="xstreamMarshaller"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+</beans>

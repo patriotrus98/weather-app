@@ -1,0 +1,77 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'cargo'
+apply plugin: 'tomcat'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath fileTree(dir: 'lib', includes: ['*.jar'])
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'org.springframework:spring-webmvc:3.2.2.RELEASE'
+    compile 'org.springframework:spring-core:3.2.2.RELEASE'
+    compile 'org.springframework:spring-web:3.2.2.RELEASE'
+    compile 'org.springframework:spring-oxm:3.2.2.RELEASE'
+    compile 'com.thoughtworks.xstream:xstream:1.4.4'
+    compile 'org.hibernate:hibernate-validator:5.0.1.Final'
+    compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile 'javax.validation:validation-api:1.1.0.Final'
+    compile 'org.hibernate:hibernate-validator:5.0.1.Final'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.springframework:spring-test:3.2.2.RELEASE'
+    testCompile 'org.apache.commons:commons-io:1.3.2'
+    testCompile 'org.mockito:mockito-all:1.9.5'
+    runtime 'jstl:jstl:1.2'
+
+    def tomcatVersion = '7.0.42'
+    def cargoVersion = '1.1.3'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+        cargo "org.codehaus.cargo:cargo-core-uberjar:${cargoVersion}", "org.codehaus.cargo:cargo-ant:${cargoVersion}"
+    }
+}
+
+cargo {
+    containerId = 'tomcat7x'
+    port = 8080
+
+    local {
+        /*Specify your Local Tomcat Path. Eg: 'D:/tomcat/apache-tomcat-7.0.42' and output path
+          Eg: D:/tomcat/apache-tomcat-7.0.42/output.log  */
+        homeDir = file('')
+        output = file('')
+    }
+}
+
+test {
+    /**
+     * Un comment JVM args if you want to debug from command line.
+     */
+    /*jvmArgs '-Xdebug','-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005'*/
+    testLogging {
+        events 'started', 'passed'
+    }
+}
+
+war {
+    version = ''
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.7'
+}
